@@ -121,7 +121,7 @@ public class SendEmail extends HttpServlet {
                     new javax.mail.Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("boardinghousemail@gmail.com", "Giaminh2001@");
+                    return new PasswordAuthentication("todattesting@gmail.com", "toletandat");
                 }
             });
             try {

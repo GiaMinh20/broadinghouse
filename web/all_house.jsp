@@ -18,7 +18,7 @@
         <%@include file="components/navbar.jsp" %>
         <% User user = (User) session.getAttribute("admin"); %>
         <div class="container" >
-            <h3 class="text-center">Apartment</h3>
+            <h3 class="text-center">House</h3>
             <div class="row">
                 <%                    HouseDAO dao = new HouseDAO();
                     List<House> list = dao.getHouseByCategory("House");

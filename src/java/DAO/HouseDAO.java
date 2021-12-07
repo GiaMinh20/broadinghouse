@@ -197,8 +197,8 @@ public class HouseDAO {
     public int editHouse(House house) {
         EntityManager em = DBConnect.getEntityManager();
         EntityTransaction trans = em.getTransaction();
+        trans.begin();
         try {
-            trans.begin();
             em.merge(house);
             trans.commit();
             return 1;

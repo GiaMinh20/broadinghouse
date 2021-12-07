@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
@@ -88,10 +89,11 @@ public class EditHouse extends HttpServlet {
             String name = request.getParameter("name");
             Double price = Double.parseDouble(request.getParameter("price"));
             String description = request.getParameter("description");
+            
             Part part = request.getPart("imageUrl");
             InputStream imageFile = part.getInputStream();
-            byte[] image = imageFile.readAllBytes();
-            int imageLength = imageFile.toString().length();
+            byte[] image = IOUtils.toByteArray(imageFile);
+            int imageLength = image.length;
             House oldHouse = dao.getHouseById(id);
 
             House house = new House();
@@ -104,6 +106,7 @@ public class EditHouse extends HttpServlet {
             } else {
                 house.setImageUrl(image);
             }
+            house.setDetailLocation(oldHouse.getDetailLocation());
             house.setLocation(oldHouse.getLocation());
             house.setUserId(userId);
             house.setCategory(oldHouse.getCategory());
